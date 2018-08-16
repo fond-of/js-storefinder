@@ -1,0 +1,148 @@
+.storefinder {
+    position: relative;
+}
+
+.storefinder-map {
+    height: 70vh;
+    width: 100%;
+
+    @media (min-width: $screen-xs-max) {
+        min-height: 450px;
+    }
+
+    @media (max-width: $screen-xs-max) {
+        height: 50vh;
+    }
+
+}
+
+.storefinder-map-container {
+    position: relative;
+    float: left;
+    width: 100%;
+}
+
+.storefinder-map .marker-title {
+    font-size: 21px;
+}
+
+.storefinder-filter-form {
+    .fields {
+        list-style-type: none;
+        margin: 0 auto;
+        width: 100%;
+        text-align: center;
+        padding: 0;
+
+        li {
+            width: 100%;
+            padding: 10px 0;
+        }
+
+  }
+
+    .form-list {
+        list-style-type: none;
+        padding: 0;
+    }
+}
+
+.storefinder-filter {
+    text-align: center;
+    background: #ffffff;
+    padding: 20px;
+    position: absolute;
+    top: 10%;
+    z-index: 1;
+
+    h3{
+        color: #00a6de
+    }
+
+    @media (min-width: $screen-lg) {
+        width: 400px;
+    }
+
+    @media (max-width: $screen-xs-max) {
+        position: relative;
+    }
+}
+
+.storefinder-stores-container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.storefinder-stores-items {
+    align-items: flex-end;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.storefinder-stores-items .store-item {
+    margin-bottom: 50px;
+
+    h3 {
+        width: 100%;
+    }
+
+    h3 a {
+        font-size: 20px;
+    }
+
+    h3 a:hover {
+        color: #00a6de;
+    }
+}
+
+.storefinder-stores-items .pagination {
+    a {
+        background: none;
+        border: none;
+        color: #8f8c8f;
+    }
+}
+
+.storefinder-store-view {
+    .container.center {
+        text-align: center;
+        margin: 0 auto  50px;
+    }
+
+    .store--content {
+        .address {
+            font-size: 18px;
+            margin-bottom: 20px;
+
+            .button-outline.btn-outline.btn {
+                margin-top: 20px;
+
+                span {
+                    span {
+                        font-size: 18px;
+                        padding: 0 30px;
+                    }
+                }
+            }
+        }
+    }
+
+    .stores--route {
+        text-decoration: none;
+        color: #1e1e1e;
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 10px;
+        display: block;
+   }
+}
+
+
+.address-contact-items .item{
+    margin-top: 20px;
+    display:none;
+
+    &.active{
+        display:block;
+    }
+}
