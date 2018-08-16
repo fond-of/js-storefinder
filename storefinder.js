@@ -8,16 +8,15 @@ var StoreFinder = $.StoreFinder = {};
 var self = {},
     markerCluster = null;
 
-
-Validation.add('required-country', 'Please select a country.', function(v) {
-    if ($('#storefinder-filter-form-input-address').val()
-        && ( $('#storefinder-filter-form-input-country').val() == 'all'  || $('#storefinder-filter-form-input-country').val() == '' )
-    ){
-        return false;
-    }
-
-    return true;
-});
+// Validation.add('required-country', 'Please select a country.', function(v) {
+//     if ($('#storefinder-filter-form-input-address').val()
+//         && ( $('#storefinder-filter-form-input-country').val() == 'all'  || $('#storefinder-filter-form-input-country').val() == '' )
+//     ){
+//         return false;
+//     }
+//
+//     return true;
+// });
 
 // init plugin
 $.StoreFinder.init = function (options) {
