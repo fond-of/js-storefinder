@@ -1,7 +1,7 @@
 {
   "name": "storefinder",
-  "version": "1.0.0",
-  "description": "Store Finder",
+  "version": "1.0.7",
+  "description": "Storefinder",
   "private": true,
   "license": "proprietary",
   "author": {
@@ -9,6 +9,7 @@
     "email": "jozsef.geng@fondofbags.com"
   },
   "dependencies": {
+    "node-js-marker-clusterer" : "1.0.0"
   },
   "main": "./storefinder.js"
 }
