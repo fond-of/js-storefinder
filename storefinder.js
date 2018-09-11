@@ -19,10 +19,12 @@ function init(storefinderCustomOptions, apiKey)
 
         let map = initializeMap(storefinderOptions, mapOptions);
 
-        let markerClusterOptions = getMarkerClusterOptions(storefinderOptions);
-        let markerCluster = initializeMarkerCluster(map, markerClusterOptions);
+        if (typeof getStorefinderMapContainer(storefinderOptions).data('latitude') === 'undefined') {
+            let markerClusterOptions = getMarkerClusterOptions(storefinderOptions);
+            let markerCluster = initializeMarkerCluster(map, markerClusterOptions);
 
-        initializeMarkers(map, markerCluster, storefinderOptions);
+            initializeMarkers(map, markerCluster, storefinderOptions);
+        }
     });
 }
 
@@ -187,12 +189,17 @@ function getCurrentSearchQuery(storefinderOptions)
 
     let params = (new URL(document.location)).searchParams;
     if (params.has('country')) {
-        searchQuery += '?country=' + params.get('country');
+        searchQuery += '&country=' + params.get('country');
     }
 
     if (params.has('address')) {
         searchQuery += '&address=' + params.get('address');
     }
+
+    searchQuery += '&lang=' + $('html').prop('lang');
+
+    // replace first match of &
+    searchQuery = searchQuery.replace('&', '?');
 
     return searchQuery;
 }
