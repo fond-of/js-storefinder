@@ -12,18 +12,29 @@ function init(storefinderCustomOptions, apiKey)
     toggleContactAddressInfoboxOnDetailPage();
 
     let apiUrl = '//maps.googleapis.com/maps/api/js?v=3&key=' + apiKey;
+
     $.getScript(apiUrl, function()
     {
         let storefinderOptions = getStorefinderOptions(storefinderCustomOptions);
         let mapOptions = getMapOptions(storefinderOptions);
 
         let map = initializeMap(storefinderOptions, mapOptions);
+        let markerClusterOptions = getMarkerClusterOptions(storefinderOptions);
+        let markerCluster = initializeMarkerCluster(map, markerClusterOptions);
 
         if (typeof getStorefinderMapContainer(storefinderOptions).data('latitude') === 'undefined') {
-            let markerClusterOptions = getMarkerClusterOptions(storefinderOptions);
-            let markerCluster = initializeMarkerCluster(map, markerClusterOptions);
-
             initializeMarkers(map, markerCluster, storefinderOptions);
+        } else {
+            let data = [{
+                'latitude' : storefinderOptions.latitude,
+                'longitude' : storefinderOptions.longitude,
+                'content' : '',
+            }];
+
+            let markers = createMarkers(map, data, storefinderOptions);
+
+            markerCluster.clearMarkers();
+            markerCluster.addMarkers(markers, false);
         }
     });
 }
@@ -102,7 +113,7 @@ function createMarkers(map, data, storefinderOptions)
         let item = this;
         let latitude = item.latitude;
         let longitude = item.longitude;
-        let popoverContent = item.content;
+        let popoverContent = item.content || '';
 
         if (latitude === '0' || longitude === '0') {
             return true;
@@ -122,7 +133,7 @@ function createMarkers(map, data, storefinderOptions)
         markers.push(marker);
 
         // create marker popup
-        if (storefinderOptions.showInfoWindow) {
+        if (storefinderOptions.showInfoWindow && popoverContent != '') {
             infoWindows[index] = new google.maps.InfoWindow({
                 content: popoverContent
             });
