@@ -240,6 +240,7 @@ function getStorefinderDataOptions(storefinderMapContainer)
     let latitude = storefinderMapContainer.data('latitude');
     let longitude = storefinderMapContainer.data('longitude');
     let zoomLevel = storefinderMapContainer.data('zoomlevel');
+    let searchUrl = storefinderMapContainer.data('search-url');
 
     if (latitude) {
         storefinderMapContainerDataOptions.latitude = latitude;
@@ -251,6 +252,10 @@ function getStorefinderDataOptions(storefinderMapContainer)
 
     if (zoomLevel) {
         storefinderMapContainerDataOptions.zoomLevel = zoomLevel;
+    }
+
+    if (searchUrl) {
+        storefinderMapContainerDataOptions.urlSearch = searchUrl;
     }
 
     return storefinderMapContainerDataOptions;
